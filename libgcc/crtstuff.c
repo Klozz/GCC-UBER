@@ -82,8 +82,7 @@ call_ ## FUNC (void)					\
 #if defined(OBJECT_FORMAT_ELF) \
     && !defined(OBJECT_FORMAT_FLAT) \
     && defined(HAVE_LD_EH_FRAME_HDR) \
-    && !defined(inhibit_libc) \
-    && (defined(USE_EH_FRAME_HDR_FOR_STATIC) || !defined(CRTSTUFFT_O)) \
+    && !defined(inhibit_libc) && !defined(CRTSTUFFT_O) \
     && defined(__FreeBSD__) && __FreeBSD__ >= 7
 #include <link.h>
 # define USE_PT_GNU_EH_FRAME
@@ -92,8 +91,7 @@ call_ ## FUNC (void)					\
 #if defined(OBJECT_FORMAT_ELF) \
     && !defined(OBJECT_FORMAT_FLAT) \
     && defined(HAVE_LD_EH_FRAME_HDR) && defined(TARGET_DL_ITERATE_PHDR) \
-    && !defined(inhibit_libc) \
-    && (defined(USE_EH_FRAME_HDR_FOR_STATIC) || !defined(CRTSTUFFT_O)) \
+    && !defined(inhibit_libc) && !defined(CRTSTUFFT_O) \
     && defined(__sun__) && defined(__svr4__)
 #include <link.h>
 # define USE_PT_GNU_EH_FRAME
@@ -102,8 +100,7 @@ call_ ## FUNC (void)					\
 #if defined(OBJECT_FORMAT_ELF) \
     && !defined(OBJECT_FORMAT_FLAT) \
     && defined(HAVE_LD_EH_FRAME_HDR) \
-    && !defined(inhibit_libc) \
-    && (defined(USE_EH_FRAME_HDR_FOR_STATIC) || !defined(CRTSTUFFT_O)) \
+    && !defined(inhibit_libc) && !defined(CRTSTUFFT_O) \
     && defined(__GLIBC__) && __GLIBC__ >= 2
 #include <link.h>
 /* uClibc pretends to be glibc 2.2 and DT_CONFIG is defined in its link.h.
@@ -118,7 +115,7 @@ call_ ## FUNC (void)					\
 #if defined(OBJECT_FORMAT_ELF) \
     && !defined(OBJECT_FORMAT_FLAT) \
     && defined(HAVE_LD_EH_FRAME_HDR) \
-    && (defined(USE_EH_FRAME_HDR_FOR_STATIC) || !defined(CRTSTUFFT_O)) \
+    && !defined(CRTSTUFFT_O) \
     && defined(inhibit_libc) \
     && (defined(__GLIBC__) || defined(__gnu_linux__) || defined(__GNU__))
 /* On systems using glibc, an inhibit_libc build of libgcc is only
